@@ -1,8 +1,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Purpose: Set the VIM environment for SQL files
 " Author: Rajesh Kallingal <RajeshKallingal@email.com>
-" Version: 6.0.2
-" Last Modified: Mon Nov 26 10:53:04 2001
+" Version: 6.0.3
+" Last Modified: Fri Jan 11 16:09:47 2002
 " vim tw=0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Description:
@@ -39,8 +39,14 @@ vmap <LocalLeader>d yoDP '": ' \|\| ");
 vmap <LocalLeader>D yODP '": ' \|\| ");
 
 "Describe the object under cursor
-map <C-D> yiw:execute 'new ' . server . ':' . user . ':' .  '".sql'<CR>iprompt "desc "\sdW+df :set ts=8 nomodified
-vmap <C-D> y:execute 'new ' . server . ':' . user . ':' .  '".sql'<CR>iprompt "desc "\sdW+df :set ts=8 nomodified
+if exists ("*DescribeObject")
+	map <C-D> yiw:call DescribeObject()
+	vmap <C-D> y:call DescribeObject()
+else
+	map <C-D> :echohl ErrorMsg\|echo "Unknown function DescribeObject, get 'oracle.vim' from vim.sf.net"\|echohl None
+	vmap <C-D> :echohl ErrorMsg\|echo "Unknown function DescribeObject, get 'oracle.vim' from vim.sf.net"\|echohl None
+
+endif
 
 " enable Insert menu for SQL*Plus
 

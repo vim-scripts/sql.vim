@@ -1,8 +1,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Purpose: Set the VIM environment for SQL files
 " Author: Rajesh Kallingal <RajeshKallingal@email.com>
-" Version: 6.0.1
-" Last Modified: Sun Nov 11 20:43:32 2001
+" Version: 6.0.2
+" Last Modified: Mon Nov 26 10:53:04 2001
 " vim tw=0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Description:
@@ -228,28 +228,28 @@ iab <buffer> vsize VSIZE ( )<C-O>T(
 
 
 " BEGIN block
-iab <buffer> BEG BEGIN<CR>EXCEPTION<CR><TAB>WHEN OTHERS<CR>THEN<CR><Tab>RAISE_APPLICATION_ERROR (-20001, SQLERRM);<CR><BS><BS>END;<C-O>5k<End>
+iab <buffer> BEG BEGIN<CR>EXCEPTION<CR><TAB>WHEN OTHERS<CR>THEN<CR><Tab>RAISE_APPLICATION_ERROR (-20001, SQLERRM);<CR><C-D><C-D>END;<C-O>5k<End>
 
 " Create Function
-iab <buffer> CF CREATE OR REPLACE FUNCTION<CR><TAB>(<CR><Parameters_if_any,_if_none_remove_paranthesis><CR>)<CR>RETURN DataType <DataType><CR>IS<CR><CR><BS>-- Local Variables<CR><CR>BEGIN<CR><Tab><Statements><CR><BS>EXCEPTION<CR><TAB>WHEN OTHERS<CR>THEN<CR><Tab>RAISE_APPLICATION_ERROR (-20001, SQLERRM);<CR><BS><BS>END;<CR>/<C-O>16k<End><NAME><C-Left><C-Left><C-Left>
+iab <buffer> CF CREATE OR REPLACE FUNCTION<CR><TAB>(<CR><Parameters_if_any,_if_none_remove_paranthesis><CR>)<CR>RETURN DataType <DataType><CR>IS<CR><CR><C-D>-- Local Variables<CR><CR>BEGIN<CR><Tab><Statements><CR><C-D>EXCEPTION<CR><TAB>WHEN OTHERS<CR>THEN<CR><Tab>RAISE_APPLICATION_ERROR (-20001, SQLERRM);<CR><C-D><C-D>END;<CR>/<C-O>16k<End><NAME><C-Left><C-Left><C-Left>
 
 " Create Procedure
-iab <buffer> CP CREATE OR REPLACE PROCEDURE<CR><TAB>(<CR><Parameters_if_any,_if_none_remove_paranthesis><CR>)<CR>IS<CR><CR><BS>-- Local Variables<CR><CR>BEGIN<CR><Tab><Statements><CR><BS>EXCEPTION<CR><TAB>WHEN OTHERS<CR>THEN<CR><Tab>RAISE_APPLICATION_ERROR (-20001, SQLERRM);<CR><BS><BS>END;<CR>/<C-O>15k<End><NAME><C-Left><C-Left><C-Left>
+iab <buffer> CP CREATE OR REPLACE PROCEDURE<CR><TAB>(<CR><Parameters_if_any,_if_none_remove_paranthesis><CR>)<CR>IS<CR><CR><C-D>-- Local Variables<CR><CR>BEGIN<CR><Tab><Statements><CR><C-D>EXCEPTION<CR><TAB>WHEN OTHERS<CR>THEN<CR><Tab>RAISE_APPLICATION_ERROR (-20001, SQLERRM);<CR><C-D><C-D>END;<CR>/<C-O>15k<End><NAME><C-Left><C-Left><C-Left>
 
 " Create Table
 iab <buffer> CTA CREATE TABLE<CR><TAB>(<CR><Columns><CR>);<C-O>3k<End><NAME><C-Left><C-Left><C-Left>
 
 " Create Trigger
-iab <buffer> CTR CREATE OR REPLACE TRIGGER<CR><TAB>BEFORE INSERT OR UPDATE OR DELETE ON <TableName><CR>FOR EACH ROW<CR><BS>DECLARE<CR><TAB><Local_Variables><CR><BS>BEGIN<CR><TAB><Statments><CR><BS>EXCEPTION<CR><TAB>WHEN OTHERS<CR>THEN<CR><Tab>RAISE_APPLICATION_ERROR (-20001, SQLERRM);<CR><BS><BS>END;<CR>/<C-O>12k<End><NAME><C-Left><C-Left><C-Left>
+iab <buffer> CTR CREATE OR REPLACE TRIGGER<CR><TAB>BEFORE INSERT OR UPDATE OR DELETE ON <TableName><CR>FOR EACH ROW<CR><C-D>DECLARE<CR><TAB><Local_Variables><CR><C-D>BEGIN<CR><TAB><Statments><CR><C-D>EXCEPTION<CR><TAB>WHEN OTHERS<CR>THEN<CR><Tab>RAISE_APPLICATION_ERROR (-20001, SQLERRM);<CR><C-D><C-D>END;<CR>/<C-O>12k<End><NAME><C-Left><C-Left><C-Left>
 
 " Create View
-iab <buffer> CV CREATE OR REPLACE VIEW<CR><TAB>(<CR><Column_Aliases><CR>)<CR>AS<CR>SELECT<CR><TAB><Columns><CR><BS>FROM<CR><TAB><Tables><CR><BS>WHERE<CR><TAB><Conditions>;<C-O>10k<End><NAME><C-Left><C-Left><C-Left>
+iab <buffer> CV CREATE OR REPLACE VIEW<CR><TAB>(<CR><Column_Aliases><CR>)<CR>AS<CR>SELECT<CR><TAB><Columns><CR><C-D>FROM<CR><TAB><Tables><CR><C-D>WHERE<CR><TAB><Conditions>;<C-O>10k<End><NAME><C-Left><C-Left><C-Left>
 
 " CURSOR
-iab <buffer> CUR CURSOR<CR><TAB>(<CR><Parameters_if_any,_if_none_remove_paranthesis><CR>)<CR>IS<CR>SELECT<CR><TAB><Columns><CR><BS>FROM<CR><TAB><Tables><CR><BS>WHERE<CR><TAB><Conditions>;<C-O>10k<HOME><C-O>E<Right><NAME><C-Left><C-Left><C-Left>
+iab <buffer> CUR CURSOR<CR><TAB>(<CR><Parameters_if_any,_if_none_remove_paranthesis><CR>)<CR>IS<CR>SELECT<CR><TAB><Columns><CR><C-D>FROM<CR><TAB><Tables><CR><C-D>WHERE<CR><TAB><Conditions>;<C-O>10k<HOME><C-O>E<Right><NAME><C-Left><C-Left><C-Left>
 
 " dbms_output.put_line
-iab <buffer> DP dbms_output.put_line (
+iab <buffer> DP dbms_output.put_line ();<ESC>F(a
 
 " IF
 iab <buffer> IF IF<CR>THEN<CR>ELSIF<CR>THEN<CR>ELSE<CR>END IF;<C-O>5k<End>
@@ -258,20 +258,20 @@ iab <buffer> IF IF<CR>THEN<CR>ELSIF<CR>THEN<CR>ELSE<CR>END IF;<C-O>5k<End>
 iab <buffer> FOR FOR <CR>LOOP<CR>END LOOP; -- for loop for<C-O>2k
 
 " DELETE
-iab <buffer> DEL DELETE<CR>FROM<CR><TAB><TableName><CR><BS>WHERE<CR><TAB><Conditions>;<C-O>2k<Home><C-Right>
-iab <buffer> DELETE DELETE<CR>FROM<CR><TAB><TableName><CR><BS>WHERE<CR><TAB><Conditions>;<C-O>2k<Home><C-Right>
+iab <buffer> DEL DELETE<CR>FROM<CR><TAB><TableName><CR><C-D>WHERE<CR><TAB><Conditions>;<C-O>2k<Home><C-Right>
+iab <buffer> DELETE DELETE<CR>FROM<CR><TAB><TableName><CR><C-D>WHERE<CR><TAB><Conditions>;<C-O>2k<Home><C-Right>
 
 " INSERT
-iab <buffer> INS INSERT<CR>INTO<CR><TAB><CR>(<CR><Columns><CR>)<CR><BS>VALUES<CR><TAB>(<CR><Values/Variables><CR>);<C-O>7k<End><TableName><C-Left><C-Left><C-Left>
-iab <buffer> INSERT INSERT<CR>INTO<CR><TAB><CR>(<CR><Columns><CR>)<CR><BS>VALUES<CR><TAB>(<CR><Values/Variables><CR>);<C-O>7k<End><TableName><C-Left><C-Left><C-Left>
+iab <buffer> INS INSERT<CR>INTO<CR><TAB><CR>(<CR><Columns><CR>)<CR><C-D>VALUES<CR><TAB>(<CR><Values/Variables><CR>);<C-O>7k<End><TableName><C-Left><C-Left><C-Left>
+iab <buffer> INSERT INSERT<CR>INTO<CR><TAB><CR>(<CR><Columns><CR>)<CR><C-D>VALUES<CR><TAB>(<CR><Values/Variables><CR>);<C-O>7k<End><TableName><C-Left><C-Left><C-Left>
 
 " SELECT
-iab <buffer> SEL SELECT<CR><TAB><Columns><CR><BS>INTO<CR><TAB><Local_Variables><CR><BS>FROM<CR><TAB><Tables><CR><BS>WHERE<CR><TAB><Conditions>;<C-O>6k<Home><C-Right>
-iab <buffer> SELECT SELECT<CR><TAB><Columns><CR><BS>INTO<CR><TAB><Local_Variables><CR><BS>FROM<CR><TAB><Tables><CR><BS>WHERE<CR><TAB><Conditions>;<C-O>6k<Home><C-Right>
+iab <buffer> SEL SELECT<CR><TAB><Columns><CR><C-D>INTO<CR><TAB><Local_Variables><CR><C-D>FROM<CR><TAB><Tables><CR><C-D>WHERE<CR><TAB><Conditions>;<C-O>6k<Home><C-Right>
+iab <buffer> SELECT SELECT<CR><TAB><Columns><CR><C-D>INTO<CR><TAB><Local_Variables><CR><C-D>FROM<CR><TAB><Tables><CR><C-D>WHERE<CR><TAB><Conditions>;<C-O>6k<Home><C-Right>
 
 " UPDATE
-iab <buffer> UPD UPDATE<CR><TAB><TableName><CR><BS>SET<CR><TAB><Column=Value><CR><BS>WHERE<CR><TAB><Conditions>;<C-O>4k<Home><C-Right>
-iab <buffer> UPDATE UPDATE<CR><TAB><TableName><CR><BS>SET<CR><TAB><Column=Value><CR><BS>WHERE<CR><TAB><Conditions>;<C-O>4k<Home><C-Right>
+iab <buffer> UPD UPDATE<CR><TAB><TableName><CR><C-D>SET<CR><TAB><Column=Value><CR><C-D>WHERE<CR><TAB><Conditions>;<C-O>4k<Home><C-Right>
+iab <buffer> UPDATE UPDATE<CR><TAB><TableName><CR><C-D>SET<CR><TAB><Column=Value><CR><C-D>WHERE<CR><TAB><Conditions>;<C-O>4k<Home><C-Right>
 
 " Statement Number
 iab <buffer> STMT l_statement<C-X><C-L><Home><C-O>10<kPlus><End>

@@ -1,0 +1,7 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=142
+
+This is a file type plugin for Oracle SQL files. This is a companion file
+for oracle.vim script -Oracle IDE (http://vim.sourceforge.net/scripts/script.php?script_id=141) 
+                                                                          
+This has a lot of abbreviations, some mappings, few settings and syntax.
+

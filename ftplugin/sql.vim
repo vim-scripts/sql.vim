@@ -2,7 +2,7 @@
 " Purpose: Set the VIM environment for SQL files
 " Author: Rajesh Kallingal <RajeshKallingal@email.com>
 " Version: 6.0.3
-" Last Modified: Fri Jan 11 16:09:47 2002
+" Last Modified: Sat Jan 12 09:01:41 2002
 " vim tw=0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Description:
@@ -33,18 +33,18 @@ let b:comment='--'
 
 "Custom Mappings
 "put dbms_output.put_line for word/selection
-map <LocalLeader>d yawoDP '": ' \|\| ");
-map <LocalLeader>D yawODP '": ' \|\| ");
-vmap <LocalLeader>d yoDP '": ' \|\| ");
-vmap <LocalLeader>D yODP '": ' \|\| ");
+map <LocalLeader>d yawoDP <C-H>'<C-R>": ' \|\| <C-R>"<ESC>
+map <LocalLeader>D yawODP <C-H>'<C-R>": ' \|\| <C-R>"<ESC>
+vmap <LocalLeader>d yoDP <C-H>'<C-R>": ' \|\| <C-R>"<ESC>
+vmap <LocalLeader>D yODP <C-H>'<C-R>": ' \|\| <C-R>"<ESC>
 
 "Describe the object under cursor
 if exists ("*DescribeObject")
-	map <C-D> yiw:call DescribeObject()
-	vmap <C-D> y:call DescribeObject()
+	map <C-D> yiw:call DescribeObject()<C-M>
+	vmap <C-D> y:call DescribeObject()<C-M>
 else
-	map <C-D> :echohl ErrorMsg\|echo "Unknown function DescribeObject, get 'oracle.vim' from vim.sf.net"\|echohl None
-	vmap <C-D> :echohl ErrorMsg\|echo "Unknown function DescribeObject, get 'oracle.vim' from vim.sf.net"\|echohl None
+	map <C-D> :echohl ErrorMsg\|echo "Unknown function DescribeObject, get 'oracle.vim' from vim.sf.net"\|echohl None<C-M>
+	vmap <C-D> <ESC>:echohl ErrorMsg\|echo "Unknown function DescribeObject, get 'oracle.vim' from vim.sf.net"\|echohl None<C-M>
 
 endif
 
@@ -194,16 +194,16 @@ iab <buffer> TANH TANH ( )<C-O>T(
 iab <buffer> tanh TANH ( )<C-O>T(
 
 
-iab <buffer> TOC TO_CHAR (, =dateformat)<C-O>T(
-iab <buffer> TO_C TO_CHAR (, =dateformat)<C-O>T(
-iab <buffer> TO_CHAR TO_CHAR (, =dateformat)<C-O>T(
-iab <buffer> to_char TO_CHAR (, =dateformat)<C-O>T(
+iab <buffer> TOC TO_CHAR (, <C-R>=dateformat<C-M>)<C-O>T(
+iab <buffer> TO_C TO_CHAR (, <C-R>=dateformat<C-M>)<C-O>T(
+iab <buffer> TO_CHAR TO_CHAR (, <C-R>=dateformat<C-M>)<C-O>T(
+iab <buffer> to_char TO_CHAR (, <C-R>=dateformat<C-M>)<C-O>T(
 
 
-iab <buffer> TOD TO_DATE (, =dateformat)<C-O>T(
-iab <buffer> TO_D TO_DATE (, =dateformat)<C-O>T(
-iab <buffer> TO_DATE TO_DATE (, =dateformat)<C-O>T(
-iab <buffer> to_date TO_DATE (, =dateformat)<C-O>T(
+iab <buffer> TOD TO_DATE (, <C-R>=dateformat<C-M>)<C-O>T(
+iab <buffer> TO_D TO_DATE (, <C-R>=dateformat<C-M>)<C-O>T(
+iab <buffer> TO_DATE TO_DATE (, <C-R>=dateformat<C-M>)<C-O>T(
+iab <buffer> to_date TO_DATE (, <C-R>=dateformat<C-M>)<C-O>T(
 
 
 iab <buffer> TO_LABEL TO_LABEL ( )<C-O>T(
